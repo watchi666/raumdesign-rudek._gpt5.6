@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://raumdesign-rudek.de/sitemap.xml
+Sitemap: https://raumdesign-rudek-gpt5-6.vercel.app/sitemap.xml

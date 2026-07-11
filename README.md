@@ -2,6 +2,10 @@
 
 Statische Website für RaumDesign Rudek, Malerfachbetrieb in Düsseldorf.
 
+**Live:** https://raumdesign-rudek-gpt5-6.vercel.app/
+
+**Repository:** https://github.com/watchi666/raumdesign-rudek._gpt5.6
+
 ## Lokal öffnen
 
 Im Projektordner:
