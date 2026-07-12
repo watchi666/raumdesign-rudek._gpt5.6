@@ -279,16 +279,16 @@ Die Gestaltung vermeidet das typische Handwerker-Blau und austauschbare Leistung
 
 „Erstelle einen asymmetrischen 7:5-Hero auf #171713. Überschrift in Cormorant Garamond, clamp(3.5rem, 7vw, 6rem), Gewicht 600, Zeilenhöhe 0.93, Farbe #FAF6EE. Begleittext in Manrope 18px/1.65. CTA auf #9A593D mit #FAF6EE, 16px 24px, Radius 999px.“
 
-### Hero Material Carousel
+### Hero Project Cylinder
 
 - Bühne: #171713 mit radialem Kupferlicht und sehr zurückhaltender mineralischer Körnung.
-- Karten: echte Rudek-Projekte, nahezu eckig, perspektivisch um eine gedachte vertikale Achse angeordnet.
-- Zentrale Karte: 60 bis 70 Prozent der Bühnenbreite, volle Deckkraft, Shadow Level 3.
-- Nachbarkarten: verkleinert, leicht gedreht und abgedunkelt, weiterhin als Buttons erkennbar.
-- Fokus: Bild bleibt innerhalb der rechten Hero-Hälfte. Linke Copy, CTAs und Header werden nie verdeckt.
-- Transformation: zuerst Ausgangsbild, dann kupferner Lichtstreifen, dahinter gestaltetes Bild. Fokusfahrt 700 ms, Pause 450 ms, Lichtfahrt 1400 ms.
-- Steuerung: sichtbare Pfeiltasten, Text „Ziehen oder Projekt wählen“, Status „Projekt X von 3“ und Schließen-Button.
-- Reduzierte Bewegung: kein automatisches Drehen, keine Fokusfahrt, kein Lichtstreifen; Nachher-Zustand erscheint direkt.
+- Zylinder: zwölf echte Rudek-Projekte, nahezu eckig, in gleichmäßigen Abständen um eine vertikale 3D-Achse angeordnet.
+- Bewegung: eine vollständige Umdrehung dauert rund 90 Sekunden. Mausrad, Trackpad, Drag, Touch, Pfeile und Drehregler übernehmen die Rotation unmittelbar.
+- Aktive Karte: kupferne Kontur, leicht nach vorn gehoben, Shadow Level 3. Nachbarkarten bleiben als Teile des Zylinders sichtbar.
+- Fokus: Ein Klick löst das gewählte Bild aus dem Zylinder und zoomt es innerhalb der rechten Hero-Hälfte groß nach vorn. Linke Copy, CTAs und Header bleiben sichtbar.
+- Lichtfahrt: eine kurze kupferne Lichtkante läuft einmal über das geöffnete Projektbild. Es wird keine Vorher-/Nachher-Wirkung behauptet.
+- Steuerung: sichtbare Pfeiltasten, Drehregler, Text „Scrollen, ziehen oder Bild wählen“, Status „Projekt X von 12“ und Schließen-Button.
+- Reduzierte Bewegung: keine automatische Rotation, keine Zoomfahrt und kein Lichtstreifen; die Fokusansicht erscheint direkt.
 
 ### Service Presentation
 

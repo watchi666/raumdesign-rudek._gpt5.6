@@ -24,7 +24,7 @@ Taktile, präzise, persönlich. Ruhig selbstbewusst, ohne Luxusfloskeln und ohne
 2. Die Seite verkauft Gestaltungskompetenz und saubere Ausführung gemeinsam.
 3. Kontaktwege bleiben trotz ambitionierter Inszenierung jederzeit klar.
 4. Keine erfundenen Kennzahlen, Bewertungen oder Projektgeschichten.
-5. Bewegung zeigt Materialverwandlung und bleibt kurz, steuerbar und zugänglich.
+5. Bewegung macht das echte Projektarchiv erlebbar und bleibt ruhig, steuerbar und zugänglich.
 
 ## Anti-Referenzen
 

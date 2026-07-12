@@ -90,32 +90,32 @@ Alle Bilder stammen aus dem Originalauftritt. Es werden keine Stockfotos und kei
 - Bewegungen vollständig über `prefers-reduced-motion` reduzierbar
 - Mindestens 44 × 44 Pixel große Touch-Ziele
 
-## Hero-Weiterentwicklung: Materialverwandlung
+## Hero-Weiterentwicklung: Rotierendes Projektarchiv
 
 ### Ästhetische Richtung
 
-Die bestehende dunkle Materialgalerie bleibt unverändert die Leitidee. Das rechte Bildfeld wird zu einer räumlichen, kupferfarben beleuchteten Projektbühne. Sie erinnert nicht an ein technisches 3D-Demo, sondern an echte Materialmuster, die in einer Werkstatt auf einem gebogenen Präsentationsband stehen.
+Die dunkle Materialgalerie bleibt die Leitidee. Das rechte Bildfeld wird zu einem echten dreidimensionalen Archivzylinder, auf dem zwölf reale Rudek-Arbeiten wie große Materialproben montiert sind. Die Inszenierung wirkt langsam, schwer und präzise, nicht wie ein hektischer Slider.
 
 ### Aufbau
 
-- Desktop: Die linke 7-Spalten-Textbühne mit Überschrift, Nutzenversprechen und CTAs bleibt ständig sichtbar. Rechts arbeitet ein 5-Spalten-Projektkarussell mit zentralem Nachher-Bild und perspektivisch zurückweichenden Nachbarbildern.
-- Tablet: Die Bühne bleibt zweigeteilt, die Projektkarten werden kompakter und die Steuerung rückt unter das Bildband.
-- Mobil: Text und Kontaktaktion stehen zuerst. Darunter folgt eine eigenständige, mindestens 44 Pixel bedienbare Projektbühne ohne horizontales Seiten-Overflow.
-- Fokusansicht: Das gewählte Bild wächst innerhalb der rechten Bühne nach vorne. Ein sichtbarer Schließen-Button, Vorher-/Nachher-Status und Projektname bleiben durchgehend verfügbar.
+- Desktop: Die linke 7-Spalten-Textbühne mit Überschrift, Nutzenversprechen und CTAs bleibt ständig sichtbar. Rechts dreht sich ein perspektivischer 3D-Zylinder mit zwölf Projektbildern.
+- Steuerung: Der Zylinder dreht sich automatisch in ruhigem Tempo. Mausrad, Trackpad, Drag, Touch, Pfeiltasten, Vor-/Zurück-Buttons und ein sichtbarer Drehregler erlauben jederzeit die direkte Kontrolle.
+- Tablet und Mobil: Die Bühne wird unter der Copy angeordnet. Radius, Kartenformat und Tiefe skalieren mit dem Viewport, ohne horizontales Seiten-Overflow.
+- Fokusansicht: Ein Klick holt das gewählte Projekt aus dem Zylinder groß in den Vordergrund. Bildtitel, Archivposition und ein klarer Schließen-Button bleiben sichtbar.
 
 ### Wow-Moment
 
-Ein Klick auf das zentrale Nachher-Bild zeigt zuerst den realen Ausgang beziehungsweise Untergrund. Nach einer kurzen Ruhephase fährt ein kupferner Lichtstreifen in etwa 1,4 Sekunden von links nach rechts und legt die gestaltete Oberfläche frei. Der gesamte Ablauf bleibt unter drei Sekunden und blockiert weder Navigation noch Kontaktaktionen.
+Die echten Projektbilder kreisen langsam um eine vertikale Achse. Beim Anklicken löst sich die gewählte Arbeit räumlich aus dem Zylinder, zoomt großformatig nach vorne und wird von einer kurzen kupferfarbenen Lichtfahrt akzentuiert. Beim Schließen kehrt der Blick in das rotierende Archiv zurück.
 
 ### Bildstrategie
 
-Das vorhandene Archiv enthält keine sicher belegten, perspektivisch identischen Vorher-/Nachher-Paare. Deshalb werden ausschließlich reale Rudek-Fotos verwendet und ehrlich als „Ausgang“ und „Gestaltet“ bezeichnet. Die Paare zeigen den Weg von neutraler beziehungsweise unfertiger Fläche zur ausgearbeiteten Oberfläche, ohne zu behaupten, dass jede Aufnahme exakt denselben Raum zeigt. Sobald exakte Paare vorliegen, können die sechs Bildpfade ohne Layoutänderung ersetzt werden.
+Das Archiv enthält keine sicher belegten, perspektivisch identischen Vorher-/Nachher-Paare. Deshalb wird keine Vergleichswirkung behauptet. Stattdessen zeigt der Hero zwölf reale fertige Arbeiten und Materialoberflächen: Lasuren, fugenlose Bäder, Reliefs, Steinoptiken, Farbkonzepte und großflächige Raumgestaltungen. Alle Bilder stammen aus dem lokalen Rudek-Archiv.
 
 ### Technische Umsetzung
 
 - Statisches HTML, CSS und Vanilla JavaScript bleiben erhalten.
-- Räumliche Wirkung mit CSS `perspective`, `transform` und `opacity`, kein WebGL und keine Animationsbibliothek.
-- Pointer-Drag, Touch, Pfeiltasten sowie Vor-/Zurück-Buttons steuern das Karussell.
-- Native Buttons, Live-Status und klare Beschriftungen sichern Tastatur- und Screenreader-Bedienung.
-- `prefers-reduced-motion` zeigt den Endzustand ohne Lichtfahrt.
-- Nur die sechs lokalen Projektbilder werden geladen; keine externen Medien.
+- Der Zylinder nutzt CSS `perspective`, `rotateY`, `translateZ`, `transform-style: preserve-3d` und GPU-freundliche `transform`-/`opacity`-Animationen.
+- `requestAnimationFrame` steuert die langsame Rotation; Interaktion pausiert beziehungsweise übernimmt die Bewegung unmittelbar.
+- Native Buttons, Drehregler, Live-Status, Escape und Fokusmanagement sichern Tastatur- und Screenreader-Bedienung.
+- `prefers-reduced-motion` deaktiviert automatische Rotation, Zoomfahrt und Lichtstreifen.
+- Ausschließlich lokale Projektbilder, keine externen Medien und keine Animationsbibliothek.
