@@ -114,7 +114,7 @@ address{font-style:normal}
 .hero-project::after{content:"";position:absolute;z-index:1;inset:0;background:linear-gradient(0deg,rgba(23,23,19,.9),transparent 58%);transition:opacity .3s ease}
 .hero-project img{width:100%;height:100%;object-fit:cover;pointer-events:none;transition:transform .8s var(--ease-out),filter .35s ease}
 .hero-project span{position:absolute;z-index:3;left:.75rem;right:.75rem;bottom:.75rem;color:var(--bone);font-family:var(--font-display);font-size:clamp(1rem,1.7vw,1.35rem);line-height:1;text-align:left;text-shadow:0 2px 10px rgba(23,23,19,.72)}
-.hero-project[data-active="true"]{--lift:.7rem;--card-scale:1.04;border-color:rgba(216,163,74,.9);box-shadow:0 30px 72px rgba(23,23,19,.72),0 0 28px rgba(216,163,74,.14)}
+.hero-project[data-active="true"]{--card-scale:1.04;border-color:rgba(216,163,74,.9);box-shadow:0 30px 72px rgba(23,23,19,.72),0 0 28px rgba(216,163,74,.14)}
 .hero-project[data-active="true"] img{animation:activeMaterial 6.8s ease-in-out infinite}
 .hero-project:hover,.hero-project:focus-visible{border-color:var(--gold)}
 .hero-project:hover::after,.hero-project:focus-visible::after{opacity:.62}

@@ -211,16 +211,22 @@
       targetRotation = currentRotation;
       lastInteraction = performance.now();
     });
-    const finishHeroDrag = (event) => {
+    const finishHeroDrag = (event, wasCanceled) => {
       if (dragStartX === null) return;
       heroTrack.classList.remove('is-dragging');
       heroTrack.releasePointerCapture?.(event.pointerId);
       dragStartX = null;
+      const wasDrag = suppressProjectClick;
       syncActiveProject(true);
       window.setTimeout(() => { suppressProjectClick = false; }, 0);
+      // The individual cards sit on a rotated 3D surface, which some browsers
+      // hit-test unreliably. A plain click/tap release on the flat track
+      // itself is a dependable fallback: it always brings the currently
+      // front-facing card into focus.
+      if (!wasCanceled && !wasDrag) openHeroFocus(activeProject);
     };
-    heroTrack.addEventListener('pointerup', finishHeroDrag);
-    heroTrack.addEventListener('pointercancel', finishHeroDrag);
+    heroTrack.addEventListener('pointerup', (event) => finishHeroDrag(event, false));
+    heroTrack.addEventListener('pointercancel', (event) => finishHeroDrag(event, true));
 
     heroTrack.addEventListener('wheel', (event) => {
       if (focusOpen) return;
