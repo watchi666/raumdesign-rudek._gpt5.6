@@ -84,12 +84,57 @@
           <a class="text-link" href="#projekte">Arbeiten ansehen <span aria-hidden="true">↘</span></a>
         </div>
       </div>
-      <figure class="hero-visual">
-        <img src="assets/images/4aabedac-e34f-4d21-bbd4-e9bec39d3ec7-1920w.jpg" width="1920" height="1080" alt="Von RaumDesign Rudek gestalteter Wohnraum mit blau-goldener Wandlasur">
-        <figcaption><span>Farbe & Raum</span><span>Düsseldorf</span></figcaption>
-      </figure>
-      <div class="hero-material" aria-hidden="true">
-        <img src="assets/images/IMG_0593-2880w.JPG" width="900" height="1200" alt="">
+      <div class="hero-showcase" data-hero-showcase aria-label="Projektverwandlungen von RaumDesign Rudek">
+        <img class="hero-showcase-backdrop" src="assets/images/4aabedac-e34f-4d21-bbd4-e9bec39d3ec7-1920w.jpg" width="1024" height="576" alt="" aria-hidden="true">
+        <div class="hero-showcase-glow" aria-hidden="true"></div>
+
+        <div class="hero-orbit" data-hero-orbit role="region" aria-roledescription="Karussell" aria-label="Gestaltete Projekte auswählen">
+          <div class="hero-project-track" data-hero-track>
+            <button class="hero-project" type="button" data-hero-project data-index="0" data-title="Lasur und Raum" data-before="assets/images/hero-ausgang-lasur.JPG" data-after="assets/images/4aabedac-e34f-4d21-bbd4-e9bec39d3ec7-1920w.jpg" aria-label="Lasur und Raum, Projekt öffnen">
+              <img src="assets/images/4aabedac-e34f-4d21-bbd4-e9bec39d3ec7-1920w.jpg" width="1024" height="576" alt="Wohnraum mit blau-goldener Wandlasur von RaumDesign Rudek">
+              <span>Lasur &amp; Raum</span>
+            </button>
+            <button class="hero-project" type="button" data-hero-project data-index="1" data-title="Raumkonzept" data-before="assets/images/hero-ausgang-raum.JPG" data-after="assets/images/hero-gestaltet-raum.JPG" aria-label="Raumkonzept, Projekt öffnen">
+              <img src="assets/images/hero-gestaltet-raum.JPG" width="960" height="640" alt="Fertig eingerichteter Wohnraum mit dunklem Farbkonzept">
+              <span>Raumkonzept</span>
+            </button>
+            <button class="hero-project" type="button" data-hero-project data-index="2" data-title="Fugenloses Bad" data-before="assets/images/hero-ausgang-bad.JPG" data-after="assets/images/P1010150-1920w.JPG" aria-label="Fugenloses Bad, Projekt öffnen">
+              <img src="assets/images/P1010150-1920w.JPG" width="1920" height="1440" alt="Fugenlose mineralische Badgestaltung in warmem Naturton">
+              <span>Fugenloses Bad</span>
+            </button>
+          </div>
+
+          <div class="hero-orbit-footer">
+            <div class="hero-orbit-controls" aria-label="Karussell steuern">
+              <button type="button" class="hero-orbit-button" data-hero-prev aria-label="Vorheriges Projekt">←</button>
+              <p><span data-hero-current>1</span> / 3</p>
+              <button type="button" class="hero-orbit-button" data-hero-next aria-label="Nächstes Projekt">→</button>
+            </div>
+            <p class="hero-orbit-hint"><span aria-hidden="true">↔</span> Ziehen oder Projekt wählen</p>
+          </div>
+          <p class="sr-only" data-hero-status aria-live="polite">Projekt 1 von 3: Lasur und Raum</p>
+        </div>
+
+        <div class="hero-transformation" data-hero-transformation hidden role="group" aria-label="Vergleich von Ausgang und gestalteter Oberfläche">
+          <button type="button" class="hero-transform-close" data-hero-close aria-label="Projektansicht schließen">×</button>
+          <div class="hero-transform-frame">
+            <img class="hero-before-image" data-hero-before src="assets/images/hero-ausgang-lasur.JPG" alt="Ausgangszustand vor der Gestaltung">
+            <div class="hero-after-mask" data-hero-after-mask>
+              <img class="hero-after-image" data-hero-after src="assets/images/4aabedac-e34f-4d21-bbd4-e9bec39d3ec7-1920w.jpg" alt="Gestaltete Oberfläche von RaumDesign Rudek">
+            </div>
+            <span class="hero-light-sweep" aria-hidden="true"></span>
+            <span class="hero-state-label hero-state-before">Ausgang</span>
+            <span class="hero-state-label hero-state-after">Gestaltet</span>
+          </div>
+          <div class="hero-transform-meta">
+            <div>
+              <span>Materialverwandlung</span>
+              <strong data-hero-transform-title>Lasur und Raum</strong>
+            </div>
+            <button type="button" data-hero-replay>Erneut ansehen</button>
+          </div>
+          <p class="sr-only" data-hero-transform-status aria-live="polite"></p>
+        </div>
       </div>
     </section>
 

@@ -279,6 +279,17 @@ Die Gestaltung vermeidet das typische Handwerker-Blau und austauschbare Leistung
 
 „Erstelle einen asymmetrischen 7:5-Hero auf #171713. Überschrift in Cormorant Garamond, clamp(3.5rem, 7vw, 6rem), Gewicht 600, Zeilenhöhe 0.93, Farbe #FAF6EE. Begleittext in Manrope 18px/1.65. CTA auf #9A593D mit #FAF6EE, 16px 24px, Radius 999px.“
 
+### Hero Material Carousel
+
+- Bühne: #171713 mit radialem Kupferlicht und sehr zurückhaltender mineralischer Körnung.
+- Karten: echte Rudek-Projekte, nahezu eckig, perspektivisch um eine gedachte vertikale Achse angeordnet.
+- Zentrale Karte: 60 bis 70 Prozent der Bühnenbreite, volle Deckkraft, Shadow Level 3.
+- Nachbarkarten: verkleinert, leicht gedreht und abgedunkelt, weiterhin als Buttons erkennbar.
+- Fokus: Bild bleibt innerhalb der rechten Hero-Hälfte. Linke Copy, CTAs und Header werden nie verdeckt.
+- Transformation: zuerst Ausgangsbild, dann kupferner Lichtstreifen, dahinter gestaltetes Bild. Fokusfahrt 700 ms, Pause 450 ms, Lichtfahrt 1400 ms.
+- Steuerung: sichtbare Pfeiltasten, Text „Ziehen oder Projekt wählen“, Status „Projekt X von 3“ und Schließen-Button.
+- Reduzierte Bewegung: kein automatisches Drehen, keine Fokusfahrt, kein Lichtstreifen; Nachher-Zustand erscheint direkt.
+
 ### Service Presentation
 
 „Baue keine Kartenmatrix. Verwende eine große typografische Leistungsliste in Cormorant Garamond 36px neben einer echten Materialaufnahme. Trenne Einträge mit #D8CDBB und hebe Interaktionen in #9A593D hervor.“
@@ -290,4 +301,3 @@ Die Gestaltung vermeidet das typische Handwerker-Blau und austauschbare Leistung
 ### Footer
 
 „Setze den Footer auf #171713 mit feinen Linien in rgba(250,246,238,0.18). Links sind #FAF6EE und werden bei Hover #D8A34A. Auf Mobilgeräten einspaltig, ab 768px dreispaltig.“
-

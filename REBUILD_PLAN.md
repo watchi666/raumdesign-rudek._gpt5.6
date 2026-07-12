@@ -90,3 +90,32 @@ Alle Bilder stammen aus dem Originalauftritt. Es werden keine Stockfotos und kei
 - Bewegungen vollständig über `prefers-reduced-motion` reduzierbar
 - Mindestens 44 × 44 Pixel große Touch-Ziele
 
+## Hero-Weiterentwicklung: Materialverwandlung
+
+### Ästhetische Richtung
+
+Die bestehende dunkle Materialgalerie bleibt unverändert die Leitidee. Das rechte Bildfeld wird zu einer räumlichen, kupferfarben beleuchteten Projektbühne. Sie erinnert nicht an ein technisches 3D-Demo, sondern an echte Materialmuster, die in einer Werkstatt auf einem gebogenen Präsentationsband stehen.
+
+### Aufbau
+
+- Desktop: Die linke 7-Spalten-Textbühne mit Überschrift, Nutzenversprechen und CTAs bleibt ständig sichtbar. Rechts arbeitet ein 5-Spalten-Projektkarussell mit zentralem Nachher-Bild und perspektivisch zurückweichenden Nachbarbildern.
+- Tablet: Die Bühne bleibt zweigeteilt, die Projektkarten werden kompakter und die Steuerung rückt unter das Bildband.
+- Mobil: Text und Kontaktaktion stehen zuerst. Darunter folgt eine eigenständige, mindestens 44 Pixel bedienbare Projektbühne ohne horizontales Seiten-Overflow.
+- Fokusansicht: Das gewählte Bild wächst innerhalb der rechten Bühne nach vorne. Ein sichtbarer Schließen-Button, Vorher-/Nachher-Status und Projektname bleiben durchgehend verfügbar.
+
+### Wow-Moment
+
+Ein Klick auf das zentrale Nachher-Bild zeigt zuerst den realen Ausgang beziehungsweise Untergrund. Nach einer kurzen Ruhephase fährt ein kupferner Lichtstreifen in etwa 1,4 Sekunden von links nach rechts und legt die gestaltete Oberfläche frei. Der gesamte Ablauf bleibt unter drei Sekunden und blockiert weder Navigation noch Kontaktaktionen.
+
+### Bildstrategie
+
+Das vorhandene Archiv enthält keine sicher belegten, perspektivisch identischen Vorher-/Nachher-Paare. Deshalb werden ausschließlich reale Rudek-Fotos verwendet und ehrlich als „Ausgang“ und „Gestaltet“ bezeichnet. Die Paare zeigen den Weg von neutraler beziehungsweise unfertiger Fläche zur ausgearbeiteten Oberfläche, ohne zu behaupten, dass jede Aufnahme exakt denselben Raum zeigt. Sobald exakte Paare vorliegen, können die sechs Bildpfade ohne Layoutänderung ersetzt werden.
+
+### Technische Umsetzung
+
+- Statisches HTML, CSS und Vanilla JavaScript bleiben erhalten.
+- Räumliche Wirkung mit CSS `perspective`, `transform` und `opacity`, kein WebGL und keine Animationsbibliothek.
+- Pointer-Drag, Touch, Pfeiltasten sowie Vor-/Zurück-Buttons steuern das Karussell.
+- Native Buttons, Live-Status und klare Beschriftungen sichern Tastatur- und Screenreader-Bedienung.
+- `prefers-reduced-motion` zeigt den Endzustand ohne Lichtfahrt.
+- Nur die sechs lokalen Projektbilder werden geladen; keine externen Medien.

@@ -43,6 +43,173 @@
     revealItems.forEach((item) => revealObserver.observe(item));
   }
 
+  const heroShowcase = document.querySelector('[data-hero-showcase]');
+  const heroOrbit = heroShowcase?.querySelector('[data-hero-orbit]');
+  const heroTrack = heroShowcase?.querySelector('[data-hero-track]');
+  const heroProjects = [...(heroShowcase?.querySelectorAll('[data-hero-project]') || [])];
+  const heroPrev = heroShowcase?.querySelector('[data-hero-prev]');
+  const heroNext = heroShowcase?.querySelector('[data-hero-next]');
+  const heroCurrent = heroShowcase?.querySelector('[data-hero-current]');
+  const heroStatus = heroShowcase?.querySelector('[data-hero-status]');
+  const heroTransformation = heroShowcase?.querySelector('[data-hero-transformation]');
+  const heroBefore = heroShowcase?.querySelector('[data-hero-before]');
+  const heroAfter = heroShowcase?.querySelector('[data-hero-after]');
+  const heroTransformTitle = heroShowcase?.querySelector('[data-hero-transform-title]');
+  const heroTransformStatus = heroShowcase?.querySelector('[data-hero-transform-status]');
+  const heroClose = heroShowcase?.querySelector('[data-hero-close]');
+  const heroReplay = heroShowcase?.querySelector('[data-hero-replay]');
+
+  if (heroShowcase && heroOrbit && heroTrack && heroProjects.length && heroTransformation) {
+    let activeProject = 0;
+    let dragStart = null;
+    let dragDistance = 0;
+    let suppressProjectClick = false;
+    let revealTimers = [];
+
+    const clearRevealTimers = () => {
+      revealTimers.forEach((timer) => window.clearTimeout(timer));
+      revealTimers = [];
+    };
+
+    const projectOffset = (index) => {
+      let offset = index - activeProject;
+      const midpoint = heroProjects.length / 2;
+      if (offset > midpoint) offset -= heroProjects.length;
+      if (offset < -midpoint) offset += heroProjects.length;
+      return offset;
+    };
+
+    const renderHeroOrbit = (announce = false) => {
+      heroProjects.forEach((project, index) => {
+        const offset = projectOffset(index);
+        const distance = Math.abs(offset);
+        const active = offset === 0;
+        project.style.setProperty('--x', `${offset * 72}%`);
+        project.style.setProperty('--z', active ? '42px' : `${-130 - ((distance - 1) * 70)}px`);
+        project.style.setProperty('--ry', `${offset * -24}deg`);
+        project.style.setProperty('--scale', active ? '1' : String(Math.max(.62, .78 - ((distance - 1) * .12))));
+        project.style.setProperty('--card-opacity', active ? '1' : String(Math.max(.42, .72 - ((distance - 1) * .18))));
+        project.style.setProperty('--layer', active ? '6' : String(Math.max(1, 4 - distance)));
+        project.dataset.active = String(active);
+        project.tabIndex = active ? 0 : -1;
+        project.setAttribute('aria-current', active ? 'true' : 'false');
+      });
+
+      const selected = heroProjects[activeProject];
+      if (heroCurrent) heroCurrent.textContent = String(activeProject + 1);
+      if (heroStatus && announce) {
+        heroStatus.textContent = `Projekt ${activeProject + 1} von ${heroProjects.length}: ${selected.dataset.title}`;
+      }
+    };
+
+    const selectHeroProject = (index, focus = false) => {
+      activeProject = (index + heroProjects.length) % heroProjects.length;
+      renderHeroOrbit(true);
+      if (focus) heroProjects[activeProject].focus({ preventScroll: true });
+    };
+
+    const runHeroTransformation = (introDelay = 1000) => {
+      clearRevealTimers();
+      heroTransformation.classList.remove('is-revealing', 'is-complete');
+      if (heroTransformStatus) heroTransformStatus.textContent = 'Ausgangszustand wird gezeigt.';
+
+      if (reducedMotion) {
+        heroTransformation.classList.add('is-complete');
+        if (heroTransformStatus) heroTransformStatus.textContent = 'Gestaltete Oberfläche wird gezeigt.';
+        return;
+      }
+
+      revealTimers.push(window.setTimeout(() => {
+        heroTransformation.classList.add('is-revealing');
+        if (heroTransformStatus) heroTransformStatus.textContent = 'Ein Lichtstreifen legt die gestaltete Oberfläche frei.';
+      }, introDelay));
+      revealTimers.push(window.setTimeout(() => {
+        heroTransformation.classList.add('is-complete');
+        if (heroTransformStatus) heroTransformStatus.textContent = 'Gestaltete Oberfläche vollständig sichtbar.';
+      }, introDelay + 1400));
+    };
+
+    const openHeroTransformation = () => {
+      const selected = heroProjects[activeProject];
+      if (!heroBefore || !heroAfter || !heroTransformTitle) return;
+      heroBefore.src = selected.dataset.before;
+      heroAfter.src = selected.dataset.after;
+      heroBefore.alt = `Ausgangsaufnahme für ${selected.dataset.title}`;
+      heroAfter.alt = `Gestaltete Aufnahme für ${selected.dataset.title}`;
+      heroTransformTitle.textContent = selected.dataset.title;
+      heroTransformation.hidden = false;
+      heroOrbit.setAttribute('aria-hidden', 'true');
+      heroClose?.focus({ preventScroll: true });
+      runHeroTransformation();
+    };
+
+    const closeHeroTransformation = () => {
+      clearRevealTimers();
+      heroTransformation.hidden = true;
+      heroTransformation.classList.remove('is-revealing', 'is-complete');
+      heroOrbit.removeAttribute('aria-hidden');
+      heroProjects[activeProject].focus({ preventScroll: true });
+    };
+
+    heroProjects.forEach((project, index) => {
+      project.addEventListener('click', () => {
+        if (suppressProjectClick) return;
+        if (index !== activeProject) {
+          selectHeroProject(index, true);
+          return;
+        }
+        openHeroTransformation();
+      });
+    });
+
+    heroPrev?.addEventListener('click', () => selectHeroProject(activeProject - 1, true));
+    heroNext?.addEventListener('click', () => selectHeroProject(activeProject + 1, true));
+    heroClose?.addEventListener('click', closeHeroTransformation);
+    heroReplay?.addEventListener('click', () => runHeroTransformation(300));
+
+    heroTrack.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        selectHeroProject(activeProject - 1, true);
+      }
+      if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        selectHeroProject(activeProject + 1, true);
+      }
+    });
+
+    heroTrack.addEventListener('pointerdown', (event) => {
+      dragStart = event.clientX;
+      dragDistance = 0;
+      heroTrack.classList.add('is-dragging');
+      heroTrack.setPointerCapture?.(event.pointerId);
+    });
+    heroTrack.addEventListener('pointermove', (event) => {
+      if (dragStart === null) return;
+      dragDistance = event.clientX - dragStart;
+    });
+    const finishHeroDrag = (event) => {
+      if (dragStart === null) return;
+      heroTrack.classList.remove('is-dragging');
+      heroTrack.releasePointerCapture?.(event.pointerId);
+      if (Math.abs(dragDistance) > 36) {
+        suppressProjectClick = true;
+        selectHeroProject(activeProject + (dragDistance < 0 ? 1 : -1));
+        window.setTimeout(() => { suppressProjectClick = false; }, 0);
+      }
+      dragStart = null;
+      dragDistance = 0;
+    };
+    heroTrack.addEventListener('pointerup', finishHeroDrag);
+    heroTrack.addEventListener('pointercancel', finishHeroDrag);
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !heroTransformation.hidden) closeHeroTransformation();
+    });
+
+    renderHeroOrbit();
+  }
+
   const lightbox = document.querySelector('#lightbox');
   const lightboxImage = lightbox?.querySelector('img');
   const lightboxCaption = lightbox?.querySelector('p');
