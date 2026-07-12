@@ -219,11 +219,16 @@
       const wasDrag = suppressProjectClick;
       syncActiveProject(true);
       window.setTimeout(() => { suppressProjectClick = false; }, 0);
+      if (wasCanceled || wasDrag) return;
       // The individual cards sit on a rotated 3D surface, which some browsers
-      // hit-test unreliably. A plain click/tap release on the flat track
-      // itself is a dependable fallback: it always brings the currently
-      // front-facing card into focus.
-      if (!wasCanceled && !wasDrag) openHeroFocus(activeProject);
+      // hit-test unreliably straight off the pointerup target. Re-resolving
+      // from the release point on the flat track is a dependable way to find
+      // exactly which card was tapped; if none resolves, fall back to the
+      // card already facing front.
+      const hitProject = document.elementFromPoint(event.clientX, event.clientY)?.closest('[data-hero-project]');
+      const index = hitProject ? Number(hitProject.dataset.index) : activeProject;
+      if (index !== activeProject) turnToProject(index);
+      openHeroFocus(index);
     };
     heroTrack.addEventListener('pointerup', (event) => finishHeroDrag(event, false));
     heroTrack.addEventListener('pointercancel', (event) => finishHeroDrag(event, true));
