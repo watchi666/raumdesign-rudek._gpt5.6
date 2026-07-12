@@ -206,7 +206,7 @@
     heroTrack.addEventListener('pointermove', (event) => {
       if (dragStartX === null) return;
       const distance = event.clientX - dragStartX;
-      if (Math.abs(distance) > 6) suppressProjectClick = true;
+      if (Math.abs(distance) > 10) suppressProjectClick = true;
       currentRotation = dragStartRotation + distance * .28;
       targetRotation = currentRotation;
       lastInteraction = performance.now();
