@@ -110,12 +110,11 @@ address{font-style:normal}
 .hero-cylinder-stage::before{content:"";position:absolute;left:50%;bottom:5%;width:min(90%,31rem);height:19%;border-radius:50%;background:radial-gradient(ellipse,rgba(216,163,74,.24),rgba(23,23,19,0) 68%);filter:blur(18px);transform:translateX(-50%) rotateX(72deg);pointer-events:none}
 .hero-cylinder-stage.is-dragging{cursor:grabbing}
 .hero-cylinder{position:absolute;left:50%;top:47%;width:var(--card-w);height:var(--card-h);transform-style:preserve-3d;transform:translate3d(-50%,-50%,0) rotateY(var(--rotation,0deg));will-change:transform}
-.hero-project{--angle:0deg;--lift:0rem;--card-scale:.94;position:absolute;inset:0;width:100%;height:100%;padding:0;border:1px solid rgba(250,246,238,.22);border-radius:2px;overflow:hidden;background:var(--umber);box-shadow:0 24px 56px rgba(23,23,19,.58);cursor:pointer;backface-visibility:hidden;transform-style:preserve-3d;transform:rotateY(var(--angle)) translateZ(calc(var(--radius) + var(--lift))) scale(var(--card-scale));transition:border-color .28s ease,box-shadow .28s ease,filter .28s ease;will-change:transform}
+.hero-project{--angle:0deg;--lift:0rem;--card-scale:1;position:absolute;inset:0;width:100%;height:100%;padding:0;border:1px solid rgba(250,246,238,.22);border-radius:2px;overflow:hidden;background:var(--umber);box-shadow:0 24px 56px rgba(23,23,19,.58);cursor:pointer;backface-visibility:hidden;transform-style:preserve-3d;transform:rotateY(var(--angle)) translateZ(calc(var(--radius) + var(--lift))) scale(var(--card-scale));transition:border-color .28s ease,box-shadow .28s ease,filter .28s ease;will-change:transform}
 .hero-project::after{content:"";position:absolute;z-index:1;inset:0;background:linear-gradient(0deg,rgba(23,23,19,.9),transparent 58%);transition:opacity .3s ease}
 .hero-project img{width:100%;height:100%;object-fit:cover;pointer-events:none;transition:transform .8s var(--ease-out),filter .35s ease}
 .hero-project span{position:absolute;z-index:3;left:.75rem;right:.75rem;bottom:.75rem;color:var(--bone);font-family:var(--font-display);font-size:clamp(1rem,1.7vw,1.35rem);line-height:1;text-align:left;text-shadow:0 2px 10px rgba(23,23,19,.72)}
-.hero-project[data-active="true"]{--card-scale:1.04;border-color:rgba(216,163,74,.9);box-shadow:0 30px 72px rgba(23,23,19,.72),0 0 28px rgba(216,163,74,.14)}
-.hero-project[data-active="true"] img{animation:activeMaterial 6.8s ease-in-out infinite}
+.hero-project[data-active="true"]{border-color:rgba(216,163,74,.9);box-shadow:0 30px 72px rgba(23,23,19,.72),0 0 28px rgba(216,163,74,.14)}
 .hero-project:hover,.hero-project:focus-visible{border-color:var(--gold)}
 .hero-project:hover::after,.hero-project:focus-visible::after{opacity:.62}
 .hero-project:hover img{filter:saturate(1.13);transform:scale(1.035)}
@@ -288,7 +287,6 @@ address{font-style:normal}
 @keyframes heroImage{from{transform:scale(1.12);filter:saturate(.6)}to{transform:scale(1.02);filter:saturate(1)}}
 @keyframes swatchFloat{0%,100%{transform:rotate(2deg) translateY(0)}50%{transform:rotate(-1deg) translateY(-10px)}}
 @keyframes stageBreath{0%,100%{opacity:.72;transform:scale(1)}50%{opacity:1;transform:scale(1.06)}}
-@keyframes activeMaterial{0%,100%{transform:scale(1.02)}50%{transform:scale(1.055)}}
 @keyframes focusBackdrop{from{opacity:0}to{opacity:1}}
 @keyframes heroZoomFront{from{opacity:0;transform:translateZ(-240px) scale(.64) rotateY(-8deg)}to{opacity:1;transform:none}}
 @keyframes focusLight{0%{opacity:0;transform:translateX(0) skewX(-7deg)}14%{opacity:1}78%{opacity:1}100%{opacity:0;transform:translateX(650%) skewX(-7deg)}}
