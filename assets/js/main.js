@@ -137,6 +137,7 @@
       heroBefore.alt = `Ausgangsaufnahme für ${selected.dataset.title}`;
       heroAfter.alt = `Gestaltete Aufnahme für ${selected.dataset.title}`;
       heroTransformTitle.textContent = selected.dataset.title;
+      heroShowcase.classList.add('is-transforming');
       heroTransformation.hidden = false;
       heroOrbit.setAttribute('aria-hidden', 'true');
       heroClose?.focus({ preventScroll: true });
@@ -147,6 +148,7 @@
       clearRevealTimers();
       heroTransformation.hidden = true;
       heroTransformation.classList.remove('is-revealing', 'is-complete');
+      heroShowcase.classList.remove('is-transforming');
       heroOrbit.removeAttribute('aria-hidden');
       heroProjects[activeProject].focus({ preventScroll: true });
     };

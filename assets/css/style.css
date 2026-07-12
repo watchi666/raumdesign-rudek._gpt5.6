@@ -104,7 +104,8 @@ address{font-style:normal}
 .hero-showcase::after{content:"";position:absolute;z-index:7;inset:0;pointer-events:none;box-shadow:inset 34px 0 60px rgba(23,23,19,.52),inset 0 -110px 100px rgba(23,23,19,.48)}
 .hero-showcase-backdrop{position:absolute;z-index:-2;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.72) contrast(1.08);opacity:.46;transform:scale(1.05);animation:heroImage 1.4s .1s var(--ease-out) forwards}
 .hero-showcase-glow{position:absolute;z-index:-1;inset:0;background:radial-gradient(circle at 50% 42%,rgba(216,163,74,.23),transparent 34%),radial-gradient(circle at 50% 45%,rgba(154,89,61,.28),transparent 58%);animation:stageBreath 6s 1s ease-in-out infinite}
-.hero-orbit{position:relative;z-index:4;height:100%;padding:6.5rem 1.1rem 1.3rem;display:flex;flex-direction:column;justify-content:center;touch-action:pan-y;user-select:none}
+.hero-orbit{position:relative;z-index:4;height:100%;padding:6.5rem 1.1rem 1.3rem;display:flex;flex-direction:column;justify-content:center;touch-action:pan-y;user-select:none;transition:opacity .28s ease}
+.hero-showcase.is-transforming .hero-orbit{opacity:0;pointer-events:none}
 .hero-project-track{position:relative;height:min(66vh,580px);min-height:390px;perspective:1100px;cursor:grab;transform-style:preserve-3d}
 .hero-project-track.is-dragging{cursor:grabbing}
 .hero-project{--x:0%;--z:0px;--ry:0deg;--scale:1;--card-opacity:1;position:absolute;z-index:var(--layer,3);left:50%;top:48%;width:clamp(170px,46%,270px);aspect-ratio:3/4;padding:0;border:1px solid rgba(250,246,238,.28);border-radius:2px;overflow:hidden;background:var(--umber);box-shadow:0 26px 64px rgba(23,23,19,.48);cursor:pointer;opacity:var(--card-opacity);transform:translate3d(calc(-50% + var(--x)),-50%,var(--z)) rotateY(var(--ry)) scale(var(--scale));transform-style:preserve-3d;transition:transform .72s var(--ease-out),opacity .45s ease,border-color .25s ease,filter .45s ease;will-change:transform}
